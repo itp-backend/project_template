@@ -28,4 +28,5 @@ func setAuthRouter(router *mux.Router, dependencies service.AuthServiceInterface
 
 func setCheckRouter(router *mux.Router, checkService service.CheckService) {
 	router.Methods(http.MethodGet).Path("/check/redis").Handler(handler.CheckRedis(checkService))
+	router.Methods(http.MethodGet).Path("/check/mysql").Handler(handler.CheckMysql(checkService))
 }

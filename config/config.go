@@ -14,6 +14,11 @@ type Config struct {
 	Environment  string
 	JWTSecret    string
 	RedisAddress string
+	DBUsername   string
+	DBPassword   string
+	DBHost       string
+	DBPort       int
+	DBName       string
 }
 
 func Init() *Config {
@@ -32,6 +37,11 @@ func Init() *Config {
 		Environment:  GetString("ENVIRONMENT"),
 		JWTSecret:    GetString("JWT_SECRET"),
 		RedisAddress: GetString("REDIS_ADDRESS"),
+		DBUsername:   GetString("DB_USERNAME"),
+		DBPassword:   GetString("DB_PASSWORD"),
+		DBHost:       GetString("DB_HOST"),
+		DBPort:       GetInt("DB_PORT"),
+		DBName:       GetString("DB_NAME"),
 	}
 
 	return appConfig
