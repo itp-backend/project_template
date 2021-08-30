@@ -24,7 +24,7 @@ spec:
         - containerPort: 8080
         volumeMounts:
           - name: config-volume
-            mountPath: /app/.env
+            mountPath: /app
         resources:
           requests:
             cpu: 250m

@@ -5,5 +5,5 @@ resources:
     - service.yml
 configMapGenerator:
     - name: $TEAM_NAME-cm
-      envs:
+      files:
         - .env
