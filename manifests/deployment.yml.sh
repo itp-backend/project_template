@@ -22,9 +22,9 @@ spec:
         image: gcr.io/$PROJECT_ID/$TEAM_NAME:$GITHUB_SHA
         ports:
         - containerPort: 8080
-        volumeMounts:
-          - name: config-volume
-            mountPath: /app
+        envFrom:
+        - configMapRef:
+            name: $TEAM_NAME-cm
         resources:
           requests:
             cpu: 250m
@@ -32,7 +32,3 @@ spec:
           limits:
             cpu: 250m
             memory: 512Mi
-      volumes:
-        - name: config-volume
-          configMap:
-            name: $TEAM_NAME-cm
