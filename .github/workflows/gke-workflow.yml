@@ -14,7 +14,7 @@ env:
     DB_NAME: ${{ secrets.DB_NAME }}
     GKE_CLUSTER: backend-gke-cluster
     GKE_REGION: asia-east1
-    TEAM_NAME: team-demo
+    TEAM_NAME: ${{ secrets.TEAM_NAME }}
 
 jobs:
     setup-build-publish-deploy:
