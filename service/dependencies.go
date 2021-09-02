@@ -3,6 +3,7 @@ package service
 import (
 	"github.com/rysmaadit/go-template/app"
 	"github.com/rysmaadit/go-template/external/jwt_client"
+	"github.com/rysmaadit/go-template/external/minio"
 	"github.com/rysmaadit/go-template/external/mysql"
 	"github.com/rysmaadit/go-template/external/redis"
 )
@@ -23,7 +24,14 @@ func InstantiateDependencies(application *app.Application) Dependencies {
 		Port:     application.Config.DBPort,
 		DBName:   application.Config.DBName,
 	})
-	checkService := NewCheckService(redisClient, mysqlClient)
+	minioClient := minio.NewMinioClient(minio.ClientConfig{
+		Endpoint:   application.Config.MinioEndpoint,
+		AccessKey:  application.Config.MinioAccessKey,
+		SecretKey:  application.Config.MinioSecretKey,
+		Region:     application.Config.MinioRegion,
+		BucketName: application.Config.MinioBucket,
+	})
+	checkService := NewCheckService(redisClient, mysqlClient, minioClient)
 
 	return Dependencies{
 		AuthService:  authService,

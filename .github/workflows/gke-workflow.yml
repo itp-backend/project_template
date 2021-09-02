@@ -7,14 +7,19 @@ env:
     PROJECT_ID: ${{ secrets.GKE_PROJECT }}
     JWT_SECRET: ${{ secrets.JWT_SECRET }}
     REDIS_ADDRESS: ${{ secrets.REDIS_ADDRESS }}
-    DB_USERNAME: ${{ secrets.DB_USERNAME }}
+    DB_USERNAME: ${{ secrets.TEAM_NAME }}
     DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
     DB_HOST: ${{ secrets.DB_HOST }}
     DB_PORT: 3306
-    DB_NAME: ${{ secrets.DB_NAME }}
+    DB_NAME: ${{ secrets.TEAM_NAME }}
     GKE_CLUSTER: backend-gke-cluster
     GKE_REGION: asia-east1
     TEAM_NAME: ${{ secrets.TEAM_NAME }}
+    MINIO_ENDPOINT: storage.googleapis.com
+    MINIO_ACCESS_KEY: ${{ secrets.MINIO_ACCESS_KEY }}
+    MINIO_SECRET_KEY: ${{ secrets.MINIO_SECRET_KEY }}
+    MINIO_REGION: US-EAST1
+    MINIO_BUCKET: ${{ secrets.TEAM_NAME }}-rakamin
 
 jobs:
     setup-build-publish-deploy:
